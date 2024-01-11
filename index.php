@@ -1,6 +1,8 @@
 <?php 
 
+$protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === 0 ? 'https://' : 'http://';
 $url = $_SERVER['HTTP_HOST'];
+$relpath = substr(str_replace('\\', '/', realpath(dirname(__FILE__))), strlen(str_replace('\\', '/', realpath($_SERVER['DOCUMENT_ROOT']))));
 
 $colours = [
     "colour_01" => "#354F61",
@@ -64,8 +66,7 @@ $individual = [
         </tr>
         <tr>
             <td style="padding-bottom: 20px;">
-                <img src="https://<?php echo $url . '/signatures/hps_signature/hps_trio.png'; ?>" alt="Hobart Plastic Surgery" style="width: 500px">
-                <!-- <img src="http://<?php echo $url . '/hps_trio.png'; ?>" alt="Hobart Plastic Surgery" style="width: 500px"> -->
+                <img src="<?php echo $protocol . $url . $relpath . '/hps_trio.png'; ?>" alt="Hobart Plastic Surgery" style="width: 500px">
             </td>
         </tr>
         <tr>
